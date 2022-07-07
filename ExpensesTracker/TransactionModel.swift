@@ -7,6 +7,10 @@
 
 import Foundation
 import SwiftUIFontIcon
+import Collections
+
+typealias TransactionGroup = OrderedDictionary<String, [Transaction]>
+typealias TransactionPrefixSum = [(String, Double)]
 
 struct Transaction: Identifiable, Decodable, Hashable {
     let id: Int
@@ -36,6 +40,10 @@ struct Transaction: Identifiable, Decodable, Hashable {
     
     var signedAmount: Double {
         return type == TransactionType.credit.rawValue ? amount : -amount
+    }
+    
+    var month: String {
+        dateParsed.formatted(.dateTime.year().month(.wide))
     }
 }
 
