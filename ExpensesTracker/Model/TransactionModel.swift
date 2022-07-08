@@ -12,7 +12,7 @@ import Collections
 typealias TransactionGroup = OrderedDictionary<String, [Transaction]>
 typealias TransactionPrefixSum = [(String, Double)]
 
-struct Transaction: Identifiable, Decodable, Hashable {
+struct Transaction: Identifiable, Decodable, Hashable, Encodable {
     let id: Int
     let date: String
     let institution: String

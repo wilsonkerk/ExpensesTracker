@@ -48,11 +48,15 @@ struct ContentView: View {
             .background(Color.background)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                // MARK: Notification Icon
+                // MARK: Plus Icon
                 ToolbarItem {
-                    Image(systemName: "bell.badge")
+                    Image(systemName: "plus")
                         .symbolRenderingMode(.palette)
                         .foregroundStyle(Color.icon, .primary)
+                        .onTapGesture {
+                            let id = transactionListViewModel.transactions.count + 1
+                            transactionListViewModel.writeFile(outputFile: "Data.json", transaction: Transaction(id: id, date: Date().formatted(), institution: "Testing", account: "Visa Credit Card", merchant: "UOB", amount: 15.00, type: TransactionType.credit.rawValue, categoryId: 701, category: "Drinks", isPending: false, isTransfer: true, isExpense: true, isEdited: false))
+                        }
                 }
             }
         }
