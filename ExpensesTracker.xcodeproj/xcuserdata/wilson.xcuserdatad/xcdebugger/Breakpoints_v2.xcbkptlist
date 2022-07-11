@@ -23,31 +23,31 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "A6DF1EF7-552E-4AD0-B666-3E42E2300A65"
+            uuid = "C05870F8-F5CC-4682-BC11-9A48F7623BFE"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ExpensesTracker/Views/ContentView.swift"
+            filePath = "ExpensesTracker/ViewModel/TransactionListViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
-            landmarkName = "body"
-            landmarkType = "24">
+            startingLineNumber = "83"
+            endingLineNumber = "83"
+            landmarkName = "createTransactionRecord(transactiontType:date:amount:merchant:account:category:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "855D6B82-196F-4231-9D8E-1F938C00B3D6"
+            uuid = "0CC0E164-EAF6-4148-BFD3-BDE530ED2DDE"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ExpensesTracker/Views/ContentView.swift"
+            filePath = "ExpensesTracker/Views/AddTransactionView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>

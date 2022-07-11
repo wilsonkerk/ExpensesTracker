@@ -21,6 +21,7 @@ final class TransactionListViewModel: ObservableObject {
         let filePath = getDocumentsDirectory().appendingPathComponent(dataFileName)
         let bundleFilePath = Bundle.main.url(forResource: dataFileName, withExtension: nil)!
         
+        // Copy dummy data into file, comment out to start from zero data
         if !FileManager.default.fileExists(atPath: filePath){
             FileManager.default.secureCopyItem(at: bundleFilePath, to: URL.init(fileURLWithPath: filePath))
         }
@@ -71,7 +72,20 @@ final class TransactionListViewModel: ObservableObject {
     //MARK: Create new transaction record
     func createTransactionRecord(transactiontType: TransactionType, date: Date, amount: String, merchant: String, account: String, category: Category) {
         let id = transactions.count + 1
-        writeFile(outputFile: "Data.json", transaction: Transaction(id: id, date: Date().formatted(), institution: "Testing", account: account, merchant: merchant, amount: Double(amount)!, type: transactiontType.rawValue, categoryId: category.id, category: category.name, isPending: false, isTransfer: transactiontType == .credit, isExpense: transactiontType == .debit, isEdited: false))
+        writeFile(outputFile: "Data.json", transaction:
+                    Transaction(id: id,
+                                date: Date().formatted(),
+                                institution: "Testing",
+                                account: account,
+                                merchant: merchant,
+                                amount: Double(amount)!,
+                                type: transactiontType.rawValue,
+                                categoryId: category.id,
+                                category: category.name,
+                                isPending: false,
+                                isTransfer: transactiontType == .credit,
+                                isExpense: transactiontType == .debit,
+                                isEdited: false))
     }
     
     func readFile(inputFile: String) -> [Transaction] {

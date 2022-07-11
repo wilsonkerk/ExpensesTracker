@@ -115,14 +115,14 @@ struct GridColumn:View {
                     FontIcon.text(.awesome5Solid(code: item.icon), fontsize: 24, color: Color.icon)
                     
                 }
+                .padding(.top)
             Text(item.name)
-                .frame(width: 80, height: 20, alignment: .center )
+                .frame(width: 80, height: 40, alignment: .center )
                 .multilineTextAlignment(.center)
                 .font(.system(.caption))
             
         }
-        
-        .frame(width: 85, height: 85)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(items.contains(where: {$0.id == item.id}) ? Color.background : Color.systemBackground)
         .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
     }
