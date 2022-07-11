@@ -22,6 +22,7 @@
 		C86259B62875339800C61489 /* TransactionListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86259B52875339800C61489 /* TransactionListViewModel.swift */; };
 		C86259B8287537F800C61489 /* Data.json in Resources */ = {isa = PBXBuildFile; fileRef = C86259B7287537F800C61489 /* Data.json */; };
 		C86259BC287576E200C61489 /* RecentTransactionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86259BB287576E200C61489 /* RecentTransactionList.swift */; };
+		C8E29C62287999890063F8B1 /* AddTransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E29C61287999890063F8B1 /* AddTransactionView.swift */; };
 		C8E9FD0F28758CB6002B4559 /* TransactionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E9FD0E28758CB6002B4559 /* TransactionList.swift */; };
 		C8E9FD12287591EB002B4559 /* Collections in Frameworks */ = {isa = PBXBuildFile; productRef = C8E9FD11287591EB002B4559 /* Collections */; };
 		C8E9FD15287592E4002B4559 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = C8E9FD14287592E4002B4559 /* SwiftUICharts */; };
@@ -62,6 +63,7 @@
 		C86259B52875339800C61489 /* TransactionListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListViewModel.swift; sourceTree = "<group>"; };
 		C86259B7287537F800C61489 /* Data.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Data.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
 		C86259BB287576E200C61489 /* RecentTransactionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentTransactionList.swift; sourceTree = "<group>"; };
+		C8E29C61287999890063F8B1 /* AddTransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionView.swift; sourceTree = "<group>"; };
 		C8E9FD0E28758CB6002B4559 /* TransactionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -156,11 +158,12 @@
 		C88761532876B8D2007F0B08 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				C862598228748B7600C61489 /* ContentView.swift */,
 				C862598028748B7600C61489 /* ExpensesTrackerApp.swift */,
+				C862598228748B7600C61489 /* ContentView.swift */,
 				C86259BB287576E200C61489 /* RecentTransactionList.swift */,
 				C8E9FD0E28758CB6002B4559 /* TransactionList.swift */,
 				C86259B0287493D000C61489 /* TransactionRow.swift */,
+				C8E29C61287999890063F8B1 /* AddTransactionView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -331,6 +334,7 @@
 				C86259AB28748E9100C61489 /* Extensions.swift in Sources */,
 				C86259B62875339800C61489 /* TransactionListViewModel.swift in Sources */,
 				C862598128748B7600C61489 /* ExpensesTrackerApp.swift in Sources */,
+				C8E29C62287999890063F8B1 /* AddTransactionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -489,6 +493,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ExpensesTracker/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -517,6 +522,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ExpensesTracker/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

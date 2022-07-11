@@ -6,12 +6,10 @@
 //
 
 import Foundation
-import Combine
+import SwiftUICharts
 
 final class TransactionListViewModel: ObservableObject {
     @Published var transactions: [Transaction] = []
-    
-    private var cancellables = Set<AnyCancellable>()
     
     var dataFileName = "Data.json"
 
@@ -37,6 +35,7 @@ final class TransactionListViewModel: ObservableObject {
         return documentsDirectory as NSString
     }
     
+    //Group transaction by month
     func groupTransactionByMonth() -> TransactionGroup {
         guard !transactions.isEmpty else {return [:]}
         
@@ -45,11 +44,12 @@ final class TransactionListViewModel: ObservableObject {
         return groupedTransactions
     }
     
+    //Accumulate the total amount of transaction and group by day
     func accumulateTransactions() -> TransactionPrefixSum {
         print("accumulateTransactions")
         guard !transactions.isEmpty else {return []}
         
-        let today = "02/17/2022".dateParsed()
+        let today = Date()
         let dateInterval = Calendar.current.dateInterval(of: .month, for: today)!
         print("dateInterval", dateInterval)
         
@@ -66,6 +66,12 @@ final class TransactionListViewModel: ObservableObject {
         }
         
         return cumulativeSum
+    }
+    
+    //MARK: Create new transaction record
+    func createTransactionRecord(transactiontType: TransactionType, date: Date, amount: String, merchant: String, account: String, category: Category) {
+        let id = transactions.count + 1
+        writeFile(outputFile: "Data.json", transaction: Transaction(id: id, date: Date().formatted(), institution: "Testing", account: account, merchant: merchant, amount: Double(amount)!, type: transactiontType.rawValue, categoryId: category.id, category: category.name, isPending: false, isTransfer: transactiontType == .credit, isExpense: transactiontType == .debit, isEdited: false))
     }
     
     func readFile(inputFile: String) -> [Transaction] {
@@ -95,7 +101,7 @@ final class TransactionListViewModel: ObservableObject {
         let filePath = fileURL.appendingPathComponent(outputFile)
         
         transactions = readFile(inputFile: outputFile)
-        transactions.append(transaction)
+        transactions.insert(transaction, at: 0)
           
         
         do {
@@ -107,6 +113,7 @@ final class TransactionListViewModel: ObservableObject {
                                encoding: .utf8)
                     self.transactions = transactions
                     print("Saved data:", data)
+                    print("File URL:", filePath)
                 }
             }
            
@@ -114,23 +121,6 @@ final class TransactionListViewModel: ObservableObject {
         } catch {
             print("error:", error.localizedDescription)
         }
-    }
-}
-
-extension Bundle{
-  // MARK: Read file 
-    func readFile(file: String) -> AnyPublisher<Data, Error> {
-        self.url(forResource: file, withExtension: nil)
-            .publisher
-            .tryMap{ string in
-                guard let data = try? Data(contentsOf: string) else {
-                    fatalError("Failed to load \(file) from bundle.")
-                }
-                return data
-            }
-            .mapError { error in
-                return error
-            }.eraseToAnyPublisher()
     }
 }
 

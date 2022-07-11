@@ -10,27 +10,27 @@ import SwiftUICharts
 
 struct ContentView: View {
     @EnvironmentObject var transactionListViewModel: TransactionListViewModel
-    var demoData: [Double] = [0, 2, 4, 6, 12, 15, 12, 5]
+    @State var presented = false
     var body: some View {
         NavigationView {
             ScrollView {
                 VStack(alignment: .leading, spacing: 24) {
-                    //MARK: Title
-                    Text("Overview")
-                        .font(.title2)
-                        .bold()
-                    
-                    //MARK: Chart
                     let data = transactionListViewModel.accumulateTransactions()
                     
                     if !data.isEmpty {
                         
-                   
                     let totalExpenses = data.last?.1 ?? 0
+                    
+                    //MARK: Chart card view
                     CardView {
                         VStack(alignment: .leading) {
                             ChartLabel(totalExpenses.formatted(.currency(code: "SGD")), type: .title, format: "SGD%.02f")
-                            LineChart()
+                            //MARK: Charts in tab view
+                            TabView {
+                                LineChart()
+                                BarChart()
+                            }
+                            .tabViewStyle(.page)
                         }
                         .background(Color.systemBackground)
                     }
@@ -54,11 +54,16 @@ struct ContentView: View {
                         .symbolRenderingMode(.palette)
                         .foregroundStyle(Color.icon, .primary)
                         .onTapGesture {
-                            let id = transactionListViewModel.transactions.count + 1
-                            transactionListViewModel.writeFile(outputFile: "Data.json", transaction: Transaction(id: id, date: Date().formatted(), institution: "Testing", account: "Visa Credit Card", merchant: "UOB", amount: 15.00, type: TransactionType.credit.rawValue, categoryId: 701, category: "Drinks", isPending: false, isTransfer: true, isExpense: true, isEdited: false))
+                            presented = true
                         }
+                        .sheet(isPresented: $presented) {
+                            AddTransactionView()
+                        }
+                        
                 }
             }
+            //MARK: Title
+            .navigationBarTitle("Expenses Overview", displayMode: .automatic)
         }
         .navigationViewStyle(.stack)
         .accentColor(.primary)

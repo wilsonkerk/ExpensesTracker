@@ -52,7 +52,7 @@ enum TransactionType: String {
     case credit = "credit"
 }
 
-struct Category {
+struct Category: Identifiable, Hashable {
     let id: Int
     let name: String
     let icon: FontAwesomeCode
@@ -115,4 +115,5 @@ extension Category {
     ]
     
     static let all: [Category] = categories + subCategories
+    static let allCategoryIcons: [FontAwesomeCode] = categories.map({$0.icon}) + subCategories.map({$0.icon})
 }
